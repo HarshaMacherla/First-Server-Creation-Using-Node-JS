@@ -1,7 +1,6 @@
-const http = require("http");
 const fs = require("fs");
 
-const server = http.createServer((req, res) => {
+const requestHandler = (req, res) => {
   const url = req.url;
   const method = req.method;
 
@@ -45,6 +44,7 @@ const server = http.createServer((req, res) => {
       });
     });
   }
-});
+};
 
-server.listen(4000);
+exports.handler = requestHandler;
+exports.someText = "Some hard coded text";
