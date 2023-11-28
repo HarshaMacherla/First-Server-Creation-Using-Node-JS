@@ -5,11 +5,15 @@ const app = express();
 
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
+const loginRoutes = require("./routes/login");
+const homeRoutes = require("./routes/home");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(loginRoutes);
 app.use("/admin", adminRoutes);
 app.use("/shop", shopRoutes);
+app.use(homeRoutes);
 
 app.use((req, res, next) => {
   res
