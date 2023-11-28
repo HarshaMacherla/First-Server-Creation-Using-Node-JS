@@ -1,3 +1,5 @@
+const path = require("path");
+
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -5,20 +7,20 @@ const app = express();
 
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
-const loginRoutes = require("./routes/login");
-const homeRoutes = require("./routes/home");
+const contactRoutes = require("./routes/contactus");
+const formSuccess = require("./routes/form-success");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(loginRoutes);
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use("/admin", adminRoutes);
-app.use("/shop", shopRoutes);
-app.use(homeRoutes);
+app.use(shopRoutes);
+app.use(contactRoutes);
+app.use(formSuccess);
 
 app.use((req, res, next) => {
-  res
-    .status(404)
-    .send("<h1>Oops! The page you have requested does not exist.</h1>");
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });
 
 app.listen(3000);
