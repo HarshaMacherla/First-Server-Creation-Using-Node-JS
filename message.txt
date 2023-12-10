@@ -1,5 +1,0 @@
-harsha: Hi, all!
-vinnu: Hi, Harsha!
-harsha: Hi, Vinnu! How are you doing?
-vinnu: I am doing great! What about you?
-harsha: Finally, we are having a conversation!

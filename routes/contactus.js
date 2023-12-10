@@ -1,10 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const { getContact } = require("../controllers/contactus");
 
-const contactUsController = require("../controllers/form");
+// Contact Us => GET
+router.get("/", getContact);
 
-router.get("/contactus", contactUsController.getContactUs);
-
-router.post("/contactus", contactUsController.postContactUs);
+// Contact Us => POST
+router.post("/", (req, res, next) => {
+  console.log(req.body);
+  res.redirect("/success");
+});
 
 module.exports = router;
